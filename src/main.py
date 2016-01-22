@@ -48,9 +48,12 @@ def main():
     else:
         for wrong_tweet in wrong_tweets:
             screen_name = wrong_tweet.user.screen_name
-            correct_tweet = ".@%s %s" % (screen_name, random.choice(correct_answers))
-            api.update_status(status=correct_tweet, in_reply_to_status_id=wrong_tweet.id)
-            print "Posted reply to the tweet with %s and the correct version of that was %s" % (wrong_word, correct_word)
+            if screen_name == api.me().screen_name:
+                print "This tweet is by me, so I will not reply"
+            else:
+                correct_tweet = ".@%s %s" % (screen_name, random.choice(correct_answers))
+                api.update_status(status=correct_tweet, in_reply_to_status_id=wrong_tweet.id)
+                print "Posted reply to the tweet with %s and the correct version of that was %s" % (wrong_word, correct_word)
 
 if __name__ == '__main__':
     main()
