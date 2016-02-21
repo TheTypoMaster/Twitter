@@ -37,7 +37,6 @@ def main():
     wrong_tweets = api.search(wrong_word, lang="en", result_type="recent", count=1)
 
     correct_answers = [
-        "Your tweet is wrong. It's actually spelt \"%s,\" not \"%s.\"" % (correct_word, wrong_word),
         "You know it's \"%s\" and not \"%s,\" right?" % (correct_word, wrong_word),
         "You're a little bit off in this tweet, though. It's \"%s\" and not \"%s.\"" % (correct_word, wrong_word),
         "Uhm, you know it is \"%s\" and not \"%s,\" right? :-)" % (correct_word, wrong_word)
